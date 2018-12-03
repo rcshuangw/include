@@ -118,7 +118,7 @@ typedef struct _GV_ITEM {
     int        nImage;      // index of the list view item icon
     QColor     crBkClr;     // Background colour (or CLR_DEFAULT)
     QColor     crFgClr;     // Forground colour (or CLR_DEFAULT)
-    quint32       lParam;      // 32-bit value to associate with item 数据
+    quint32    lParam;      // 32-bit value to associate with item 数据
     QFont      lfFont;      // Cell font
     uint       nMargin;     // Internal cell margin
     QString    strText;     // Text in cell
@@ -128,7 +128,7 @@ typedef struct _GV_ITEM {
 //操作票模板文件头
 typedef struct _tagGC_ITEM
 {
-    quint32 wReportID;			//模板文件ID
+    quint16 wReportID;			//模板文件ID
     quint8  btType;				//报表类型：模板\工作票
     quint32    nMaxRow;			//最大行数
     quint32    nMaxCol;			//最大列数
