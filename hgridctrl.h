@@ -437,30 +437,30 @@ public:
 	// in-built sort functions
     static int CALLBACK qPfnCellTextCompare(HLPARAM lParam1, HLPARAM lParam2, HLPARAM lParamSort);
     static int CALLBACK qPfnCellNumericCompare(HLPARAM lParam1, HLPARAM lParam2, HLPARAM lParamSort);
-
+*/
 ///////////////////////////////////////////////////////////////////////////////////
 // Printing
 ///////////////////////////////////////////////////////////////////////////////////
-#if !defined(_WIN32_WCE_NO_PRINTING) && !defined(GRIDCONTROL_NO_PRINTING)
 public:
-    void Print(CPrintDialog* pPrntDialog = NULL);
+    //void Print(CPrintDialog* pPrntDialog = NULL);
 
     // EFW - New printing support functions
-    void EnableWysiwygPrinting(bool bEnable = true) { m_bWysiwygPrinting = bEnable;     }
-    bool GetWysiwygPrinting()                       { return m_bWysiwygPrinting;        }
+    //void EnableWysiwygPrinting(bool bEnable = true) { m_bWysiwygPrinting = bEnable;     }
+    //bool GetWysiwygPrinting()                       { return m_bWysiwygPrinting;        }
 
-    void SetShadedPrintOut(bool bEnable = true)     {   m_bShadedPrintOut = bEnable;    }
-    bool GetShadedPrintOut(void)                    {   return m_bShadedPrintOut;       }
+    //void SetShadedPrintOut(bool bEnable = true)     {   m_bShadedPrintOut = bEnable;    }
+    //bool GetShadedPrintOut(void)                    {   return m_bShadedPrintOut;       }
 
     // Use -1 to have it keep the existing value
     void setPrintMarginInfo(int nHeaderHeight, int nFooterHeight,
         int nLeftMargin, int nRightMargin, int nTopMargin,
         int nBottomMargin, int nGap);
 
-    void getPrintMarginInfo(int &nHeaderHeight, int &nFooterHeight,
+    void printMarginInfo(int &nHeaderHeight, int &nFooterHeight,
         int &nLeftMargin, int &nRightMargin, int &nTopMargin,
         int &nBottomMargin, int &nGap);
 
+/*
 ///////////////////////////////////////////////////////////////////////////////////
 // Printing overrides for derived classes
 ///////////////////////////////////////////////////////////////////////////////////
