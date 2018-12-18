@@ -16,11 +16,6 @@
 typedef QList<HGridCellBase*> GRID_ROW;
 class HGridCtrl;
 
-
-/*
- * HGridCtrl为了能有滚动条的效果，继承QAbstractScrollArea
-*/
-
 /////////////////////////////////////////////////////////////////////////////
 class GRIDCTRL_EXPORT HGridCtrl :public QAbstractScrollArea
 {

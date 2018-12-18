@@ -26,7 +26,6 @@ public:
     virtual void  setBackClr(const QColor& clr)             { m_crBkClr = clr;     }
     virtual void  setFont(const QFont& font)                { m_plfFont = font;    }
     virtual void  setMargin(uint nMargin)                   { m_nMargin = nMargin; }
-    //virtual CWnd* GetEditWnd() const                      { return m_pEditWnd;   }
     virtual void  setCoords(int /*nRow*/, int /*nCol*/) {}  // don't need to know the row and
                                                             // column for base implementation
 
@@ -40,6 +39,7 @@ public:
     virtual QColor      backClr() const                     { return m_crBkClr; }
     virtual QFont       font()    const                     { return m_plfFont; }
     virtual int         margin()  const                     { return m_nMargin; }
+    virtual QWidget*    editWnd() const                     { return m_pEditWnd;   }
 
     //单元格边框相关属性
     virtual void   setBorderStyle(short style)              { m_nBorderStyle = style; }

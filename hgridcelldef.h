@@ -18,6 +18,7 @@ using namespace std;
 #include <QKeyEvent>
 #include <QClipboard>
 #include <QScrollBar>
+#include <QLineEdit>
 #include <math.h>
 #include <iterator>
 typedef unsigned int HWPARAM;
