@@ -147,24 +147,22 @@ protected:
     virtual void onDblClick( QPoint PointCellRelative);
     virtual bool onSetCursor();
 public:
-    /*bool IsMerged();
-	void SetMergeRange(HCellRange range);
-    void Show(bool IsShow);
-	void UnMerge();
-    virtual bool IsShow() ;
-    virtual HCellRange GetMergeRange();
-    virtual bool IsMergeWithOthers();
-	virtual HCellID GetMergeCellID();
-	virtual void SetMergeCellID(HCellID cell);*/
+    virtual void setShow(bool);
+    virtual bool isShow();
+    virtual bool isMerged();
+    virtual void setMergeRange(HCellRange range);
+    virtual HCellRange mergeRange();
+    virtual void split();
+    virtual bool isMergeWithOthers();
+    virtual HCellID mergeCellID();
+    virtual void setMergeCellID(HCellID cell);
 protected:
     quint32    m_nState;      // Cell state (selected/focus etc)
 private:
-/*
+    bool m_bShow;
     HCellRange m_MergeRange;
-    bool m_IsMergeWithOthers;
+    bool m_bMergeWithOthers;
 	HCellID m_MergeCellID;
-    bool m_Hide;
-    */
 };
 
 #endif

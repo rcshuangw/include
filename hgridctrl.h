@@ -246,7 +246,7 @@ public:
 ///////////////////////////////////////////////////////////////////////////////////
 public:
     HGridCellBase* getCell(int nRow, int nCol) const;   // Get the actual cell!
-
+    HGridCellBase* getCell(HCellID cell)       const;
     //设置表格是否修改标志 ok
     void setModified(bool bModified = true, int nRow = -1, int nCol = -1);
     bool isModified(int nRow = -1, int nCol = -1);
@@ -460,36 +460,34 @@ public:
         int &nLeftMargin, int &nRightMargin, int &nTopMargin,
         int &nBottomMargin, int &nGap);
 
-/*
+
 ///////////////////////////////////////////////////////////////////////////////////
 // Printing overrides for derived classes
 ///////////////////////////////////////////////////////////////////////////////////
-public:
-    virtual void OnBeginPrinting(CDC *pDC, CPrintInfo *pInfo);
-    virtual void OnPrint(CDC *pDC, CPrintInfo *pInfo);
-    virtual void OnEndPrinting(CDC *pDC, CPrintInfo *pInfo);
-
-#endif // #if !defined(_WIN32_WCE_NO_PRINTING) && !defined(GRIDCONTROL_NO_PRINTING)
-
 // Implementation
 public:
     //Merge the selected cells    合并单元格
-	//by Huang Wei
-    CGridCellBase* GetCell(HCellID cell);
-    HCellID GetMergeCellID(HCellID cell);
-	void UnMergeSelectedCells();
-	void MergeSelectedCells();
-	void UnMergeCells(int nStartRow, int nStartCol, int nEndRow, int nEndCol);
-	void MergeCells(int nStartRow, int nStartCol, int nEndRow, int nEndCol);
-    int  GetMergeCellWidth(HCellID cell);
-    int  GetMergeCellHeight(HCellID cell);
-    bool GetCellOriginNoMerge(int nRow, int nCol, LPPOINT p);
-    bool GetCellOriginNoMerge(const HCellID& cell, LPPOINT p);
+    //查看单元格是否属于合并单元格，如果是合并单元格则返回合并单元格第1个行列
+    HCellID mergeCellID(HCellID cell);
+
+    //取消合并单元格
+    void setSplitSelectedCells();
+
+    //合并选择的单元格
+    void setMergeSelectedCells();
+
+    //取消合并单元格
+    void setSplitCells(int nStartRow, int nStartCol, int nEndRow, int nEndCol);
+
+    //合并单元格
+    void setMergeCells(int nStartRow, int nStartCol, int nEndRow, int nEndCol);
+
+    int  mergeCellWidth(HCellID cell);
+    int  mergeCellHeight(HCellID cell);
+    bool cellOriginNoMerge(int nRow, int nCol, QPoint& p);
+    bool cellOriginNoMerge(const HCellID& cell, QPoint& p);
 
 
-
-
-*/
 protected:
     //设置默认单元格
     void setupDefaultCells(); //
@@ -565,7 +563,7 @@ protected:
     // Editing
     virtual void  onEditCell(int nRow, int nCol, QPoint point);
     //virtual void  onEndEditCell(int nRow, int nCol, CString str);
-    //virtual bool  validateEdit(int nRow, int nCol, LPCTSTR str);
+    virtual bool  validateEdit(int nRow, int nCol, QString& str);
     virtual void  endEditing();
 
     // Drawing
@@ -594,14 +592,16 @@ protected:
 
     int         m_nGridLines; //网格绘制类型
     bool        m_bShowGrid;  //显示网格
-    bool        m_bEditable;
-    bool        m_bModified;
+    bool        m_bEditable;  //允许编辑
+    bool        m_bModified;  //是否修改
     bool        m_bAllowDragAndDrop;
     bool        m_bListMode;
-    bool        m_bSingleRowSelection;
-    bool        m_bSingleColSelection;
+    bool        m_bHorizontalHeader;   //显示行头
+    bool        m_bVerticalHeader;     //显示列头
+    bool        m_bSingleRowSelection; //行选择
+    bool        m_bSingleColSelection; //列选择
     bool        m_bAllowDraw;
-    bool        m_bEnableSelection;
+    bool        m_bEnableSelection;    //允许选择单元格
     bool        m_bFixedRowSelection, m_bFixedColumnSelection;
     bool        m_bSortOnClick;
     bool        m_bHandleTabKey;
@@ -615,7 +615,6 @@ protected:
     bool        m_bTrackFocusCell;
     bool        m_bFrameFocus;
     uint        m_nAutoSizeColumnStyle;
-    bool        m_bMulSelection;
 
     // Cell size details
     int            m_nRows, m_nFixedRows, m_nCols, m_nFixedCols;
