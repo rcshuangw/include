@@ -42,26 +42,26 @@ public:
     bool setFixedRowCount(int nFixedRows = 1);
     bool setFixedColumnCount(int nFixedCols = 1);
 
-    //行高、列宽 ok
+    //行高、列宽
     int  rowHeight(int nRow) const;
     bool setRowHeight(int row, int height);
     int  columnWidth(int nCol) const;
     bool setColumnWidth(int col, int width);
 
-    //获取单元格的左上角位置或者矩形区域 mid
+    //获取单元格的左上角位置或者矩形区域
     bool cellOrigin(int nRow, int nCol, QPoint& p);
     bool cellOrigin(const HCellID& cell, QPoint& p);
     bool cellRect(int nRow, int nCol, QRect& pRect);
     bool cellRect(const HCellID& cell, QRect& pRect);
 
-    //获取文字矩形 ok
+    //获取文字矩形
     bool textRect(const HCellID& cell, QRect& pRect);
     bool textRect(int nRow, int nCol, QRect& pRect);
 
     //获取point点的行列号。如果true是固定行列，如果是false则是开始到point的行列等...... mid--huangw
     HCellID cellFromPt(const QPoint& point, bool bAllowFixedCellCheck = true);
 
-    //获取固定行的行高 固定列的列宽 ok
+    //获取固定行的行高 固定列的列宽
     int  fixedRowHeight() const;
     int  fixedColumnWidth() const;
 
@@ -319,7 +319,7 @@ public:
 
     //清除表格范围
     void clearCells(HCellRange Selection);
-/*
+
     //自动调整行列，扩展行列到合适位置
     bool autoSizeRow(int nRow, bool bResetScroll = true);
     bool autoSizeColumn(int nCol, uint nAutoSizeStyle = GVS_DEFAULT, bool bResetScroll = true);
@@ -330,14 +330,14 @@ public:
     void expandLastColumn();
     void expandRowsToFit(bool bExpandFixed = true);
     void expandToFit(bool bExpandFixed = true);
-*/
+
     //自动填充
     void refresh();
-/*    void autoFill();   // Fill grid with blank cells
+/*    void autoFill();   // Fill grid with blank cells*/
 
     //可视化
     void ensureVisible(HCellID &cell)       { ensureVisible(cell.row, cell.col); }
-    void ensureVisible(int nRow, int nCol);*/
+    void ensureVisible(int nRow, int nCol);
     bool isCellVisible(int nRow, int nCol);
     bool isCellVisible(const HCellID& cell);
 
@@ -464,19 +464,14 @@ public:
     //Merge the selected cells    合并单元格
     //查看单元格是否属于合并单元格，如果是合并单元格则返回合并单元格第1个行列
     HCellID mergeCellID(HCellID cell);
-
     //取消合并单元格
     void setSplitSelectedCells();
-
     //合并选择的单元格
     void setMergeSelectedCells();
-
     //取消合并单元格
     void setSplitCells(int nStartRow, int nStartCol, int nEndRow, int nEndCol);
-
     //合并单元格
     void setMergeCells(int nStartRow, int nStartCol, int nEndRow, int nEndCol);
-
     int  mergeCellWidth(HCellID cell);
     int  mergeCellHeight(HCellID cell);
     bool cellOriginNoMerge(int nRow, int nCol, QPoint& p);
@@ -503,7 +498,7 @@ protected:
     bool mouseOverColumnResizeArea(QPoint& point);
 
     HCellID topleftNonFixedCell(bool bForceRecalculation = false);
-    //HCellRange GetUnobstructedNonFixedCellRange(bool bForceRecalculation = false);
+    HCellRange unobstructedNonFixedCellRange(bool bForceRecalculation = false);
     HCellRange visibleNonFixedCellRange(QRect& pRect = QRect(), bool bForceRecalculation = false);
 
     bool isVisibleVScroll() { return ( (m_nBarState & GVL_VERT) > 0); }
@@ -696,6 +691,7 @@ protected:
     virtual void mouseMoveEvent(QMouseEvent *event);
     virtual void resizeEvent(QResizeEvent *event);
     virtual void wheelEvent(QWheelEvent *event);
+    virtual void mouseDoubleClickEvent(QMouseEvent *event);
     //virtual bool event(QEvent *event);
     //virtual void scrollContentsBy(int dx, int dy);
  /*
