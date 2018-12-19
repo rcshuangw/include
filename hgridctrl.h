@@ -633,7 +633,6 @@ protected:
     int         m_nResizeCaptureRange;
     bool        m_bAllowRowResize, m_bAllowColumnResize;
     int         m_nRowsPerWheelNotch;
-    //CMap<DWORD,DWORD, HCellID, HCellID&> m_SelectedCellMap, m_PrevSelectedCellMap;
     QMap<quint32,HCellID> m_SelectedCellMap, m_PrevSelectedCellMap;
 
 #ifndef GRIDCONTROL_NO_TITLETIPS
@@ -692,76 +691,6 @@ protected:
     virtual void resizeEvent(QResizeEvent *event);
     virtual void wheelEvent(QWheelEvent *event);
     virtual void mouseDoubleClickEvent(QMouseEvent *event);
-    //virtual bool event(QEvent *event);
-    //virtual void scrollContentsBy(int dx, int dy);
- /*
-    //重载函数 对应windows的消息映射函数
-    virtual void enterEvent(QEvent *event);
-    virtual void focusInEvent(QFocusEvent *event);
-    virtual bool focusNextPrevChild(bool next);
-    virtual void focusOutEvent(QFocusEvent *event);
-    virtual void hideEvent(QHideEvent *event);
-    virtual void inputMethodEvent(QInputMethodEvent *event);
-    virtual void leaveEvent(QEvent *event);
-    virtual void mouseDoubleClickEvent(QMouseEvent *event);
-    virtual void mouseMoveEvent(QMouseEvent *event);
-    virtual void mousePressEvent(QMouseEvent *event);
-    virtual void mouseReleaseEvent(QMouseEvent *event);
-    virtual void moveEvent(QMoveEvent *event);
-
-    virtual void resizeEvent(QResizeEvent *event);
-    virtual void showEvent(QShowEvent *event);
-    virtual void wheelEvent(QWheelEvent *event);
-
-
-    // Generated message map functions
-    //{{AFX_MSG(CGridCtrl)
-    //afx_msg void OnPaint();
-    afx_msg void OnHScroll(UINT nSBCode, UINT nPos, CScrollBar* pScrollBar);
-    afx_msg void OnVScroll(UINT nSBCode, UINT nPos, CScrollBar* pScrollBar);
-    ///afx_msg void OnSize(UINT nType, int cx, int cy);
-    //afx_msg void OnLButtonUp(UINT nFlags, CPoint point);
-    //afx_msg void OnLButtonDown(UINT nFlags, CPoint point);
-    //afx_msg void OnMouseMove(UINT nFlags, CPoint point);
-    afx_msg void OnTimer(UINT nIDEvent);
-    afx_msg UINT OnGetDlgCode();
-    //afx_msg void OnKeyDown(UINT nChar, UINT nRepCnt, UINT nFlags);
-    //afx_msg void OnKeyUp(UINT nChar, UINT nRepCnt, UINT nFlags);
-    afx_msg void OnChar(UINT nChar, UINT nRepCnt, UINT nFlags);
-    //afx_msg void OnLButtonDblClk(UINT nFlags, CPoint point);
-    afx_msg bool OnEraseBkgnd(CDC* pDC);
-    afx_msg void OnSysKeyDown(UINT nChar, UINT nRepCnt, UINT nFlags);
-    afx_msg void OnUpdateEditSelectAll(CCmdUI* pCmdUI);
-    //}}AFX_MSG
-#ifndef _WIN32_WCE_NO_CURSOR
-    afx_msg bool OnSetCursor(CWnd* pWnd, UINT nHitTest, UINT message);
-#endif
-#ifndef _WIN32_WCE
-    afx_msg void OnRButtonDown(UINT nFlags, CPoint point);
-    afx_msg void OnRButtonUp(UINT nFlags, CPoint point);    // EFW - Added
-    afx_msg void OnSysColorChange();
-#endif
-#ifndef _WIN32_WCE_NO_CURSOR
-    afx_msg void OnCaptureChanged(CWnd *pWnd);
-#endif
-#ifndef QT_NO_CLIPBOARD
-    afx_msg void OnUpdateEditCopy(CCmdUI* pCmdUI);
-    afx_msg void OnUpdateEditCut(CCmdUI* pCmdUI);
-    afx_msg void OnUpdateEditPaste(CCmdUI* pCmdUI);
-#endif
-#if (_MFC_VER >= 0x0421) || (_WIN32_WCE >= 210)
-    afx_msg void OnSettingChange(UINT uFlags, LPCTSTR lpszSection);
-#endif
-#if !defined(_WIN32_WCE) && (_MFC_VER >= 0x0421)
-    afx_msg bool OnMouseWheel(UINT nFlags, short zDelta, CPoint pt);
-#endif
-    afx_msg LRESULT OnSetFont(WPARAM hFont, LPARAM lParam);
-    afx_msg LRESULT OnGetFont(WPARAM hFont, LPARAM lParam);
-    afx_msg LRESULT OnImeChar(WPARAM wCharCode, LPARAM lParam);
-    afx_msg void OnEndInPlaceEdit(NMHDR* pNMHDR, LRESULT* pResult);
-    DECLARE_MESSAGE_MAP()*/
-
-
 };
 
 // Returns the default cell implementation for the given grid region

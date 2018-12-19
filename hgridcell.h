@@ -124,7 +124,7 @@ protected:
     bool       m_bEditing;     // Cell being edited?
 
     HGridCtrl* m_pGrid;        // Parent grid control
-    HInPlaceEdit *m_pEditWnd;
+    QWidget *m_pEditWnd;
 };
 
 // This class is for storing grid default values. It's a little heavy weight, so
