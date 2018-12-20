@@ -33,10 +33,10 @@ public:
 ///////////////////////////////////////////////////////////////////////////////////
 public:
     //行、列数目  Fixed 表头的行数和列数  ok
-    int  rowCount() const                    { return m_nRows; }
-    int  columnCount() const                 { return m_nCols; }
-    int  fixedRowCount() const               { return m_nFixedRows; }
-    int  fixedColumnCount() const            { return m_nFixedCols; }
+    int  rowCount() const                                  { return m_nRows; }
+    int  columnCount() const                               { return m_nCols; }
+    int  fixedRowCount() const                             { return m_nFixedRows; }
+    int  fixedColumnCount() const                          { return m_nFixedCols; }
     bool setRowCount(int nRows = 10);
     bool setColumnCount(int nCols = 10);
     bool setFixedRowCount(int nFixedRows = 1);
@@ -74,16 +74,16 @@ public:
     inline QSize cellTextExtent(int nRow, int nCol)  { return textExtent(nRow, nCol, itemText(nRow,nCol)); }// EFW - Get extent of current text in cell
 
     //设置网格背景颜色、网格线颜色 ok
-    void     setGridBkColor(const QColor& clr)         { m_crGridBkColour = clr;           }
-    QColor   gridBkColor() const                 { return m_crGridBkColour;          }
-    void     setGridLineColor(const QColor& clr)       { m_crGridLineColour = clr;         }
-    QColor   gridLineColor() const               { return m_crGridLineColour;        }
+    void     setGridBkColor(const QColor& clr)                                  { m_crGridBkColour = clr;       }
+    QColor   gridBkColor() const                                                { return m_crGridBkColour;      }
+    void     setGridLineColor(const QColor& clr)                                { m_crGridLineColour = clr;     }
+    QColor   gridLineColor() const                                              { return m_crGridLineColour;    }
 
     //提示窗口背景颜色、提示文字颜色 ok
-    void	 setTitleTipBackClr(const QColor& clr = QColor(QCLR_DEFAULT))   { m_crTTipBackClr = clr;  }
-    QColor   titleTipBackClr()				                          { return m_crTTipBackClr; }
-    void	 setTitleTipTextClr(const QColor& clr = QColor(QCLR_DEFAULT))   { m_crTTipTextClr = clr;  }
-    QColor   titleTipTextClr()				                          { return m_crTTipTextClr; }
+    void	 setTitleTipBackClr(const QColor& clr = QColor(QCLR_DEFAULT))       { m_crTTipBackClr = clr;        }
+    QColor   titleTipBackClr()				                                    { return m_crTTipBackClr;       }
+    void	 setTitleTipTextClr(const QColor& clr = QColor(QCLR_DEFAULT))       { m_crTTipTextClr = clr;        }
+    QColor   titleTipTextClr()				                                    { return m_crTTipTextClr;       }
 
     //设置默认表格属性
     void   setTextColor(const QColor& clr)           { m_cellDefault.setTextClr(clr);           }
@@ -93,32 +93,32 @@ public:
     void   setFixedTextColor(const QColor& clr)      { m_cellFixedRowDef.setTextClr(clr);
                                                        m_cellFixedColDef.setTextClr(clr);
                                                        m_cellFixedRowColDef.setTextClr(clr);    }
-    QColor fixedTextColor() const                   { return m_cellFixedRowDef.textClr();      }
+    QColor fixedTextColor() const                    { return m_cellFixedRowDef.textClr();      }
     void   setFixedBkColor(const QColor& clr)        { m_cellFixedRowDef.setBackClr(clr);
                                                          m_cellFixedColDef.setBackClr(clr);
-                                                         m_cellFixedRowColDef.setBackClr(clr);    }
-    QColor fixedBkColor() const                        { return m_cellFixedRowDef.backClr();      }
+                                                         m_cellFixedRowColDef.setBackClr(clr);  }
+    QColor fixedBkColor() const                      { return m_cellFixedRowDef.backClr();      }
     void   setGridColor(const QColor& clr)           { setGridLineColor(clr);                   }
-    QColor gridColor()                                 { return gridLineColor();                  }
+    QColor gridColor()                                 { return gridLineColor();                }
     void   setBkColor(const QColor& clr)             { setGridBkColor(clr);                     }
-    QColor bkColor()                                   { return gridBkColor();                    }
+    QColor bkColor()                                 { return gridBkColor();                    }
 
-    void     setDefCellMargin( int nMargin)            { m_cellDefault.setMargin(nMargin);
-                                                         m_cellFixedRowDef.setMargin(nMargin);
-                                                         m_cellFixedColDef.setMargin(nMargin);
-                                                         m_cellFixedRowColDef.setMargin(nMargin); }
-    int      defCellMargin() const                { return m_cellDefault.margin();           }
+    void     setDefCellMargin( int nMargin)          { m_cellDefault.setMargin(nMargin);
+                                                       m_cellFixedRowDef.setMargin(nMargin);
+                                                       m_cellFixedColDef.setMargin(nMargin);
+                                                       m_cellFixedRowColDef.setMargin(nMargin); }
+    int      defCellMargin() const                   { return m_cellDefault.margin();           }
 
-    int      defCellHeight() const                { return m_cellDefault.height();           }
-    void     setDefCellHeight(int nHeight)        { m_cellDefault.setHeight(nHeight);
-                                                    m_cellFixedRowDef.setHeight(nHeight);
-                                                    m_cellFixedColDef.setHeight(nHeight);
-                                                    m_cellFixedRowColDef.setHeight(nHeight); }
-    int      defCellWidth() const                 { return m_cellDefault.width();            }
-    void     setDefCellWidth(int nWidth)          { m_cellDefault.setWidth(nWidth);
-                                                    m_cellFixedRowDef.setWidth(nWidth);
-                                                    m_cellFixedColDef.setWidth(nWidth);
-                                                    m_cellFixedRowColDef.setWidth(nWidth);   }
+    int      defCellHeight() const                   { return m_cellDefault.height();           }
+    void     setDefCellHeight(int nHeight)           { m_cellDefault.setHeight(nHeight);
+                                                       m_cellFixedRowDef.setHeight(nHeight);
+                                                       m_cellFixedColDef.setHeight(nHeight);
+                                                       m_cellFixedRowColDef.setHeight(nHeight); }
+    int      defCellWidth() const                    { return m_cellDefault.width();            }
+    void     setDefCellWidth(int nWidth)             { m_cellDefault.setWidth(nWidth);
+                                                       m_cellFixedRowDef.setWidth(nWidth);
+                                                       m_cellFixedColDef.setWidth(nWidth);
+                                                       m_cellFixedRowColDef.setWidth(nWidth);   }
 
     // ***************************************************************************** //
     //设置表格相关标志
@@ -158,9 +158,9 @@ public:
 
     //单行、单列选择 ok
     void setSingleRowSelection(bool bSing = true) { m_bSingleRowSelection = bSing;    }
-    bool isSingleRowSelection()                     { return m_bSingleRowSelection & m_bListMode; }
+    bool isSingleRowSelection()                   { return m_bSingleRowSelection & m_bListMode; }
     void setSingleColSelection(bool bSing = true) { m_bSingleColSelection = bSing;    }
-    bool isSingleColSelection()                     { return m_bSingleColSelection;     }
+    bool isSingleColSelection()                   { return m_bSingleColSelection;     }
 
     //设置可选择 ok
     void enableSelection(bool bEnable = true)     { resetSelectedRange(); m_bEnableSelection = bEnable; resetSelectedRange(); }
@@ -211,24 +211,28 @@ public:
     bool isTrackFocusCell()                       { return m_bTrackFocusCell;         }
 
     //设置框架焦点 没用到
-    void setFrameFocusCell(bool bFrame)           { m_bFrameFocus = bFrame;           }
-    bool isFrameFocusCell()                       { return m_bFrameFocus;             }
+    void setFrameFocusCell(bool bFrame)              { m_bFrameFocus = bFrame;           }
+    bool isFrameFocusCell()                          { return m_bFrameFocus;             }
 
     //设置自动调整大小 没用到
-    void setAutoSizeStyle(int nStyle = GVS_BOTH)  { m_nAutoSizeColumnStyle = nStyle;  }
-    int  autoSizeStyle()                          { return m_nAutoSizeColumnStyle; }
+    void setAutoSizeStyle(int nStyle = GVS_BOTH)     { m_nAutoSizeColumnStyle = nStyle;  }
+    int  autoSizeStyle()                             { return m_nAutoSizeColumnStyle; }
 
     //设置忽略隐藏列 忽略隐藏的列并向左看第一个可见列
-    void enableHiddenColUnhide(bool bEnable = true){ m_bHiddenColUnhide = bEnable;    }
-    bool hiddenColUnhide()                         { return m_bHiddenColUnhide;        }
-    void enableHiddenRowUnhide(bool bEnable = true){ m_bHiddenRowUnhide = bEnable;    }
-    bool hiddenRowUnhide()                         { return m_bHiddenRowUnhide;        }
+    void enableHiddenColUnhide(bool bEnable = true)  { m_bHiddenColUnhide = bEnable;    }
+    bool hiddenColUnhide()                           { return m_bHiddenColUnhide;        }
+    void enableHiddenRowUnhide(bool bEnable = true)  { m_bHiddenRowUnhide = bEnable;    }
+    bool hiddenRowUnhide()                           { return m_bHiddenRowUnhide;        }
 
     //允许行列隐藏 如当鼠标移动列，如果允许隐藏列，则列宽为0，如果不允许则列宽是最小是1
-    void enableColumnHide(bool bEnable = true)     { m_bAllowColHide = bEnable;        }
-    bool isColumnHide()                            { return m_bAllowColHide;           }
-    void enableRowHide(bool bEnable = true)        { m_bAllowRowHide = bEnable;        }
-    bool isRowHide()                               { return m_bAllowRowHide;           }
+    void enableHorizontalHeader(bool bEnable = true) { m_bHorizontalHeader = bEnable; }
+    bool isHorizontalHeader()                        { return m_bHorizontalHeader;    }
+    void enableVerticalHeader(bool bEnable = true)   { m_bVerticalHeader = bEnable;   }
+    bool isVerticalHeader()                          { return m_bVerticalHeader;}
+    void enableColumnHide(bool bEnable = true)       { m_bAllowColHide = bEnable;        }
+    bool isColumnHide()                              { return m_bAllowColHide;           }
+    void enableRowHide(bool bEnable = true)          { m_bAllowRowHide = bEnable;        }
+    bool isRowHide()                                 { return m_bAllowRowHide;           }
 
 ///////////////////////////////////////////////////////////////////////////////////
 // default Grid cells. Use these for setting default values such as colors and fonts
@@ -563,6 +567,32 @@ protected:
     virtual HGridCellBase* createCell(int nRow, int nCol);
     virtual void destroyCell(int nRow, int nCol);
 
+protected:
+
+    void selectAllCells();
+    void selectColumns(HCellID currentCell, bool bForceRedraw=false, bool bselectCells=true);
+    void selectRows(HCellID currentCell, bool bForceRedraw=false, bool bselectCells=true);
+    void selectCells(HCellID currentCell, bool bForceRedraw=false, bool bselectCells=true);
+    void onSelecting(const HCellID& currentCell);
+    void validateAndModifyCellContents(int nRow, int nCol, const QString& strText);
+
+    virtual void paintEvent(QPaintEvent *event);
+    virtual void keyPressEvent(QKeyEvent *event);
+    virtual void keyReleaseEvent(QKeyEvent *event);
+    virtual void mousePressEvent(QMouseEvent *event);
+    virtual void mouseReleaseEvent(QMouseEvent *event);
+    virtual void mouseMoveEvent(QMouseEvent *event);
+    virtual void resizeEvent(QResizeEvent *event);
+    virtual void wheelEvent(QWheelEvent *event);
+    virtual void mouseDoubleClickEvent(QMouseEvent *event);
+
+signals:
+    void activated(const HCellID& cell);
+    void clicked(const HCellID& cell);
+    void doubleClicked(const HCellID& cell);
+    void iconSizeChanged(const HCellID& cell,const QSize &size);
+    void pressed(const HCellID& cell);
+
 public slots:
     void  onEndEditCell(int nRow, int nCol, QString str);
     void  onHorizontalScrollBarChanged(int value);
@@ -670,27 +700,6 @@ protected:
     // lines.  Left, right, and gap are in characters (avg width is used).
     int         m_nHeaderHeight, m_nFooterHeight, m_nLeftMargin,
                 m_nRightMargin, m_nTopMargin, m_nBottomMargin, m_nGap;
-
-    QPainter* m_painter;
-
-protected:
-
-    void selectAllCells();
-    void selectColumns(HCellID currentCell, bool bForceRedraw=false, bool bselectCells=true);
-    void selectRows(HCellID currentCell, bool bForceRedraw=false, bool bselectCells=true);
-    void selectCells(HCellID currentCell, bool bForceRedraw=false, bool bselectCells=true);
-    void onSelecting(const HCellID& currentCell);
-    void validateAndModifyCellContents(int nRow, int nCol, const QString& strText);
-
-    virtual void paintEvent(QPaintEvent *event);
-    virtual void keyPressEvent(QKeyEvent *event);
-    virtual void keyReleaseEvent(QKeyEvent *event);
-    virtual void mousePressEvent(QMouseEvent *event);
-    virtual void mouseReleaseEvent(QMouseEvent *event);
-    virtual void mouseMoveEvent(QMouseEvent *event);
-    virtual void resizeEvent(QResizeEvent *event);
-    virtual void wheelEvent(QWheelEvent *event);
-    virtual void mouseDoubleClickEvent(QMouseEvent *event);
 };
 
 // Returns the default cell implementation for the given grid region

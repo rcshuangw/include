@@ -94,7 +94,7 @@ public:
 
 protected:
     QString    m_strText;      // Cell text (or binary data if you wish...)
-    quint32   m_lParam;       // 32-bit value to associate with item
+    quint32    m_lParam;       // 32-bit value to associate with item
     int        m_nImage;       // Index of the list view item icon
     quint32    m_nFormat;    //格式
     quint32    m_nTextOption; //文字环绕标志 多行
