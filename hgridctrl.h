@@ -225,10 +225,10 @@ public:
     bool hiddenRowUnhide()                           { return m_bHiddenRowUnhide;        }
 
     //允许行列隐藏 如当鼠标移动列，如果允许隐藏列，则列宽为0，如果不允许则列宽是最小是1
-    void enableHorizontalHeader(bool bEnable = true) { m_bHorizontalHeader = bEnable; }
-    bool isHorizontalHeader()                        { return m_bHorizontalHeader;    }
-    void enableVerticalHeader(bool bEnable = true)   { m_bVerticalHeader = bEnable;   }
-    bool isVerticalHeader()                          { return m_bVerticalHeader;}
+    //void enableHorizontalHeader(bool bEnable = true) { m_bHorizontalHeader = bEnable; }
+    // bool isHorizontalHeader()                        { return m_bHorizontalHeader;    }
+    //void enableVerticalHeader(bool bEnable = true)   { m_bVerticalHeader = bEnable;   }
+    //bool isVerticalHeader()                          { return m_bVerticalHeader;}
     void enableColumnHide(bool bEnable = true)       { m_bAllowColHide = bEnable;        }
     bool isColumnHide()                              { return m_bAllowColHide;           }
     void enableRowHide(bool bEnable = true)          { m_bAllowRowHide = bEnable;        }
@@ -616,8 +616,8 @@ protected:
     bool        m_bModified;  //是否修改
     bool        m_bAllowDragAndDrop;
     bool        m_bListMode;
-    bool        m_bHorizontalHeader;   //显示行头
-    bool        m_bVerticalHeader;     //显示列头
+    //bool        m_bHorizontalHeader;   //显示行头
+    //bool        m_bVerticalHeader;     //显示列头
     bool        m_bSingleRowSelection; //行选择
     bool        m_bSingleColSelection; //列选择
     bool        m_bAllowDraw;
