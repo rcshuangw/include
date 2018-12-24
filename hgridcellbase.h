@@ -63,6 +63,11 @@ public:
     virtual short  borderStyle()                  const = 0 ;
     virtual QColor borderColor()                  const = 0 ;
 
+    virtual void   setDrawBorder(bool)          = 0 ;
+    virtual void   setDrawBorderTop(bool)       = 0 ;
+    virtual void   setDrawBorderBottom(bool)    = 0 ;
+    virtual void   setDrawBorderLeft(bool)      = 0 ;
+    virtual void   setDrawBorderRight(bool)     = 0 ;
     virtual bool   isDrawBorder()           = 0 ;
     virtual	bool   isDrawBorderBottom()     = 0 ;
     virtual	bool   isDrawBorderRight()      = 0 ;

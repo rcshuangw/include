@@ -43,15 +43,21 @@ public:
 
     //单元格边框相关属性
     virtual void   setBorderStyle(short style)              { m_nBorderStyle = style; }
-    virtual void   setBorderColor(const QColor& clr)        { m_crBoderClr = clr; }
-    virtual short  borderStyle() const                      { return m_nBorderStyle; }
-    virtual QColor borderColor() const                      { return m_crBoderClr; }
+    virtual void   setBorderColor(const QColor& clr)        { m_crBoderClr = clr;     }
+    virtual short  borderStyle() const                      { return m_nBorderStyle;  }
+    virtual QColor borderColor() const                      { return m_crBoderClr;    }
 
-    virtual bool   isDrawBorder()                           { return m_bBorder; }
+    virtual void   setDrawBorder(bool b)                    { m_bBorder = b;          }
+    virtual void   setDrawBorderTop(bool b)                 { m_bTopBorder = b;       }
+    virtual void   setDrawBorderBottom(bool b)              { m_bBottomBorder = b;    }
+    virtual void   setDrawBorderLeft(bool b)                { m_bLeftBorder = b;      }
+    virtual void   setDrawBorderRight(bool b)               { m_bRightBorder = b;     }
+
+    virtual bool   isDrawBorder()                           { return m_bBorder;       }
     virtual	bool   isDrawBorderBottom()                     { return m_bBottomBorder; }
-    virtual	bool   isDrawBorderRight()                      { return m_bRightBorder; }
-    virtual	bool   isDrawBorderTop()                        { return m_bTopBorder; }
-    virtual	bool   isDrawBorderLeft()                       { return m_bLeftBorder; }
+    virtual	bool   isDrawBorderRight()                      { return m_bRightBorder;  }
+    virtual	bool   isDrawBorderTop()                        { return m_bTopBorder;    }
+    virtual	bool   isDrawBorderLeft()                       { return m_bLeftBorder;   }
 
     //风格
     virtual void setBorderBottomStyle(ushort style)         { m_nBottomBorderStyle = style; }
