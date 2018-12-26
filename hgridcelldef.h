@@ -209,7 +209,7 @@ typedef struct tagGV_CACHEHINT {
 #define QDT_TOP                      Qt::AlignTop
 #define QDT_LEFT                     Qt::AlignLeft
 #define QDT_HCENTER                  Qt::AlignHCenter
-#define QDT_CENTER                   QDT_VCENTER|QDT_HCENTER
+#define QDT_CENTER                   QDT_HCENTER|QDT_VCENTER
 #define QDT_RIGHT                    Qt::AlignRight
 #define QDT_VCENTER                  Qt::AlignVCenter
 #define QDT_BOTTOM                   Qt::AlignBottom
