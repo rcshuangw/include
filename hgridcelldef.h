@@ -257,7 +257,18 @@ typedef struct tagGV_CACHEHINT {
 #define GVHT_ABOVE              0x0080
 #define GVHT_BELOW              0x0100
 
+//////////////////////////////////////////////////////////////////////////////
+/// 定义画笔类型
+//////////////////////////////////////////////////////////////////////////////
+#define QPS_NOPEN           Qt::NoPen
+#define QPS_SOLIDLINE       Qt::SolidLine
+#define QPS_DASHLINE        Qt::DashLine
+#define QPS_DOTLINE         Qt::DotLine
+#define QPS_DASHDOTLINE     Qt::DashDotLine
+#define QPS_DASHDOTDOTLINE  Qt::DashDotDotLine
+#define QPS_CUSTOMDASHLINE  Qt::CustomDashLine
 
+/////////////////////////////////////////////////////
 #define GRIDREPORT_TYPE_EDITOR   0x01 //编辑框
 #define GRIDREPORT_TYPE_BROWSER  0x02 //浏览框
 #endif

@@ -88,8 +88,8 @@ public:
     virtual	void   clearBorderTopColor()    {;}
     virtual	void   clearBorderLeftColor()   {;}
 
-    virtual bool   isDefaultFont()       const               { return false; }
-    virtual bool   isEditing()           const               { return m_bEditing; }
+    virtual bool   isDefaultFont()       const               { return false;              }
+    virtual bool   isEditing()           const               { return m_bEditing;         }
     virtual void   reset();
 
 // editing cells
