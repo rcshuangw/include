@@ -321,6 +321,10 @@ public:
     bool deleteNonFixedRows();
     bool deleteAllItems();
 
+    //刷新行列头
+    void autoRowHeader();
+    void autoColumnHeader();
+
     //清除表格范围
     void clearCells(HCellRange Selection);
 

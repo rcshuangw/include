@@ -25,6 +25,8 @@ using namespace std;
 typedef unsigned int HWPARAM;
 typedef qlonglong HLPARAM; //统一64位平台
 
+const int ROWMAX_COUNT = 999;
+const int COLMAX_COUNT = 999;
 //颜色定义 参考windos系统
 /*
  * 基础颜色参考windows系统，防止与windows已有定义冲突，所有在原定义前面加入Q
@@ -271,4 +273,7 @@ typedef struct tagGV_CACHEHINT {
 /////////////////////////////////////////////////////
 #define GRIDREPORT_TYPE_EDITOR   0x01 //编辑框
 #define GRIDREPORT_TYPE_BROWSER  0x02 //浏览框
+
+//定义表头的26字母
+const char ascii[26] = {'A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z'};
 #endif
