@@ -24,6 +24,8 @@ public:
 
 public:
     void endEdit();
+protected:
+    virtual void keyReleaseEvent(QKeyEvent *event);
 public slots:
     void onEditingFinished();
     void onTextChanged(const QString &text);

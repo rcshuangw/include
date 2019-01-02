@@ -128,6 +128,18 @@ typedef struct _GV_ITEM {
     QString    strText;     // Text in cell
 } GV_ITEM;
 
+//表格边框结构
+typedef struct _GV_BORDER_ITEM {
+    int row,col;
+    short       nLeftBorderStyle;
+    QString     strLeftBoderClr;
+    short       nRightBorderStyle;
+    QString     strRightBoderClr;
+    short       nTopBorderStyle;
+    QString     strTopBoderClr;
+    short       nBottomBorderStyle;
+    QString     strBottomBoderClr;
+}GV_BORDER_ITEM;
 
 //操作票模板文件头
 typedef struct _tagGC_ITEM

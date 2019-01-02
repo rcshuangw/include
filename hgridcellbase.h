@@ -16,12 +16,12 @@ public:
 public:
     virtual void setText(const QString&)       = 0 ; //设置文字
     virtual void setImage(int)                 = 0 ; //设置图片
-    virtual void setData(const quint32 & )    = 0 ; //设置数据
+    virtual void setData(const quint32 & )     = 0 ; //设置数据
     virtual void setState(quint32 nState)      { m_nState = nState; }
     virtual void setFormat(quint32 )           = 0 ; //格式
-    virtual void setTextClr(const QColor&)      = 0 ; //文字颜色
-    virtual void setBackClr(const QColor& )     = 0 ; //背景颜色
-    virtual void setFont(const QFont& )         = 0 ;
+    virtual void setTextClr(const QColor&)     = 0 ; //文字颜色
+    virtual void setBackClr(const QColor& )    = 0 ; //背景颜色
+    virtual void setFont(const QFont& )        = 0 ;
     virtual void setMargin( uint )             = 0 ;
     virtual void setGrid(HGridCtrl* )          = 0 ;
     virtual void setCoords( int, int)          = 0 ; //row,col

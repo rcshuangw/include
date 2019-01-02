@@ -295,6 +295,10 @@ public:
     bool  setItemFont(int nRow, int nCol, const QFont& lf);
     QFont itemFont(int nRow, int nCol);
 
+    //设置边框
+    bool setItemBorder(int nRow,int nCol,const GV_BORDER_ITEM* pItem);
+    bool itemBorder(int nRow,int nCol,GV_BORDER_ITEM* pItem);
+
     //是否编辑 ok
     bool isItemEditing(int nRow, int nCol);
 

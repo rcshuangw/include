@@ -1,23 +1,23 @@
-#ifndef HGRIDCTRLCOMMAND_H
+﻿#ifndef HGRIDCTRLCOMMAND_H
 #define HGRIDCTRLCOMMAND_H
 ///////////////////////////////////////
 //撤销、删除类
 ///////////////////////////////////////
 #include <QUndoCommand>
-#include "hgridcell.h"
+#include "hgridctrl.h"
 class HUndoCommand : public QUndoCommand
 {
 public:
     enum Type{
-        New = 0,            //新建
-        Delete = 1,         //删除
-        Paste = 2,          //粘贴
-        Move = 3,           //移动
-        Group = 4,          //组合
-        UnGroup = 5,        //解除
-        Rotate = 6,         //旋转
-        Turn = 7,           //翻转
-        Resize = 8,         //改变大小(包含手动改变大小，对齐，相等)
+        Color    = 0,   //颜色
+        Border   = 1,   //边框
+        Font     = 2,   //字体
+        Format   = 3,   //格式
+        Merge    = 4,   //合并
+        Split    = 5,   //拆分
+        Paste    = 6,   //粘贴
+        Delete   = 7,   //删除
+        Resize   = 8,   //改变大小
     };
 
     HUndoCommand();
@@ -26,7 +26,7 @@ public:
     virtual int id() const;
     virtual void redo();
     virtual void undo();
-    virtual void notify();
+    //virtual void notify();
 protected:
     bool bFirstTime;
 };
@@ -35,7 +35,7 @@ protected:
 class HDelUndoCommand : public HUndoCommand
 {
 public:
-    HDelUndoCommand(const HCellRange& range,QString strText);
+    HDelUndoCommand(HGridCtrl* pGridCtrl,const HCellRange& range,QString strText);
     ~HDelUndoCommand();
 public:
     virtual int id() const;
@@ -44,13 +44,14 @@ public:
 protected:
     HCellRange cellRange;
     QString strDeleteText;
+    HGridCtrl* m_pGridCtrl;
 };
 
 //粘贴
 class HPasteUndoCommand : public HUndoCommand
 {
 public:
-    HPasteUndoCommand(const HCellRange& range,QString strText);
+    HPasteUndoCommand(HGridCtrl* pGridCtrl,const HCellRange& range,QString strNewText,QString strOldText);
     ~HPasteUndoCommand();
 public:
     virtual int id() const;
@@ -58,10 +59,27 @@ public:
     virtual void undo();
 protected:
     HCellRange cellRange;
-    QString strPatstText;
+    QString strNewText;
+    QString strOldText;
+    HGridCtrl* m_pGridCtrl;
 };
 
 
-
+//字体
+class HFontUndoCommand : public HUndoCommand
+{
+public:
+    HFontUndoCommand(HGridCtrl* pGridCtrl,const HCellRange& range,const QFont& newFont,const QFont& oldFont);
+    ~HFontUndoCommand();
+public:
+    virtual int id() const;
+    virtual void redo();
+    virtual void undo();
+protected:
+    HCellRange m_cellRange;
+    QFont m_newFont;
+    QFont m_oldFont;
+    HGridCtrl* m_pGridCtrl;
+};
 
 #endif // HGRIDCTRLCOMMAND_H
