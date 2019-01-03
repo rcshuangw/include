@@ -329,8 +329,10 @@ public:
     void autoRowHeader();
     void autoColumnHeader();
 
-    //清除表格范围
+    //清除表格范围(所有，格式，文字）
     void clearCells(HCellRange Selection);
+    void clearFormats(HCellRange Selection);
+    void clearFormatting(HCellRange Selection);
 
     //自动调整行列，扩展行列到合适位置
     bool autoSizeRow(int nRow, bool bResetScroll = true);
