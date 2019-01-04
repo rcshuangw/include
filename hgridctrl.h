@@ -316,7 +316,7 @@ public:
 ///////////////////////////////////////////////////////////////////////////////////
 public:
     //插入行列，在原有的基础上再插入
-    int  insertColumn(const QString& strHeading, uint nFormat = 0,int nColumn = -1);//format huangw
+    int  insertColumn(const QString& strHeading, quint32 nFormat = 0,int nColumn = -1);//format huangw
     int  insertRow(const QString& strHeading, int nRow = -1);
 
     //删除行列
