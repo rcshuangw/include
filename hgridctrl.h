@@ -32,6 +32,7 @@ public:
 // 属性操作
 ///////////////////////////////////////////////////////////////////////////////////
 public:
+
     //行、列数目  Fixed 表头的行数和列数  ok
     int  rowCount() const                                  { return m_nRows; }
     int  columnCount() const                               { return m_nCols; }
@@ -372,9 +373,8 @@ public:
     bool redrawColumn(int col);
 
     //表格存储 ???
-    bool save(const QString& filename, char chSeparator = (','));
-    bool load(const QString& filename, char chSeparator = (','));
-
+    void load(int v,QDataStream* ds);
+    void save(int v,QDataStream* ds);
 
 ///////////////////////////////////////////////////////////////////////////////////
 // Cell Ranges

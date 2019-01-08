@@ -22,6 +22,7 @@ using namespace std;
 #include <QMimeData>
 #include <math.h>
 #include <iterator>
+#include "hcellrange.h"
 typedef unsigned int HWPARAM;
 typedef qlonglong HLPARAM; //统一64位平台
 
@@ -103,17 +104,25 @@ typedef  QList<QImage*>  QImageList;
 #define GVIF_IMAGE              0x0002
 #define GVIF_PARAM              0x0004
 #define GVIF_STATE              0x0008
-#define GVIF_BKCLR              (GVIF_STATE<<1)
-#define GVIF_FGCLR              (GVIF_STATE<<2)
-#define GVIF_FORMAT             (GVIF_STATE<<3)
-#define GVIF_FONT               (GVIF_STATE<<4)
-#define GVIF_MARGIN             (GVIF_STATE<<5)
+#define GVIF_BKCLR              0x0010
+#define GVIF_FGCLR              0x0020
+#define GVIF_FORMAT             0x0040
+#define GVIF_FONT               0x0080
+#define GVIF_MARGIN             0x0100
+#define GVIF_BORDER             0x0200
+#define GVIF_MERGE              0x0400
 #define GVIF_ALL                (GVIF_TEXT|GVIF_IMAGE|GVIF_PARAM|GVIF_STATE|GVIF_BKCLR|GVIF_FGCLR| \
-                                 GVIF_FORMAT|GVIF_FONT|GVIF_MARGIN)
+                                 GVIF_FORMAT|GVIF_FONT|GVIF_MARGIN|GVIF_BORDER|GVIF_MERGE)
 
 /////////////////////////////////////////////////////////////
 /// 定义单元格内容
 /////////////////////////////////////////////////////////////
+/*
+ * 备注：为什么要采用这种方式？读取和保存表格的时候，如果读取和保存都放在HGridCtrl和HGridCell里面
+ * 那么就需要每次创建表格的时候(特别是读取)才能操作表格。如果多个表格进行切换的时候，就需要每次都要创建新表格
+ * ，然后再读取内容，这种操作也行，但是效率上就可能不高。所以就采用表格数据独立出来，保存和读取放在外面，这样
+ * 切换的时候可以直接清除原来表格内容，将新的表格内容重新设置即可。而且能做到一个文件就是一个完整的表格。
+*/
 typedef struct _GV_ITEM {
     int        row,col;     // Row and Column of item
     uint       mask;        // Mask for use in getting/setting cell data
@@ -126,6 +135,26 @@ typedef struct _GV_ITEM {
     QFont      lfFont;      // Cell font
     uint       nMargin;     // Internal cell margin
     QString    strText;     // Text in cell
+
+    //边框部分
+    bool        bLeftBorder;         //设置左边框
+    short       nLeftBorderStyle;    //设置左边框类型
+    QColor      crLeftBoderClr;      //边框颜色
+    bool        bTopBorder;          //设置上边框
+    short       nTopBorderStyle;     //设置上边框类型
+    QColor      crTopBoderClr;       //上边框颜色
+    bool        bRightBorder;        //设置右边框
+    short       nRightBorderStyle;   //设置右边框类型
+    QColor      crRightBoderClr;     //右边框颜色
+    bool        bBottomBorder;       //设置左边框
+    short       nBottomBorderStyle;  //设置左边框类型
+    QColor      crBottomBoderClr;    //边框颜色
+
+    //合并部分
+    bool bShow;
+    HCellRange MergeRange;
+    HCellID MergeCellID;
+
 } GV_ITEM;
 
 //表格边框结构

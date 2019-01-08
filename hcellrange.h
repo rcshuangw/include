@@ -12,7 +12,7 @@
 
 #include "hgridglobal.h"
 //表格ID类，仿Qt风格编写
-
+#include <QDataStream>
 class GRIDCTRL_EXPORT HCellID
 {    
 // Attributes
@@ -30,6 +30,11 @@ public:
 //表格范围类，用于单元格的合并
 class GRIDCTRL_EXPORT HCellRange
 { 
+public:
+#ifndef QT_NO_DATASTREAM
+    friend GRIDCTRL_EXPORT QDataStream &operator<<(QDataStream &s, const HCellRange &cellRange);
+    friend GRIDCTRL_EXPORT QDataStream &operator>>(QDataStream &s, HCellRange &cellRange);
+#endif
 public:
     
     HCellRange(int nMinRow = -1, int nMinCol = -1, int nMaxRow = -1, int nMaxCol = -1)
@@ -73,56 +78,5 @@ protected:
     int m_nMaxCol;
 };
 
-inline void HCellRange::set(int minRow, int minCol, int maxRow, int maxCol)
-{
-     m_nMinRow = minRow;
-     m_nMinCol = minCol;
-     m_nMaxRow = maxRow;
-     m_nMaxCol = maxCol;
-}
-
-inline void HCellRange::operator=(const HCellRange& rhs)
-{
-    if (this != &rhs) set(rhs.m_nMinRow, rhs.m_nMinCol, rhs.m_nMaxRow, rhs.m_nMaxCol);
-}
-
-inline int HCellRange::operator==(const HCellRange& rhs)
-{
-     return ((m_nMinRow == rhs.m_nMinRow) && (m_nMinCol == rhs.m_nMinCol) &&
-             (m_nMaxRow == rhs.m_nMaxRow) && (m_nMaxCol == rhs.m_nMaxCol));
-}
-
-inline int HCellRange::operator!=(const HCellRange& rhs)
-{
-     return !operator==(rhs);
-}
-
-inline int HCellRange::isValid() const
-{
-     return (m_nMinRow >= 0 && m_nMinCol >= 0 && m_nMaxRow >= 0 && m_nMaxCol >= 0 &&
-             m_nMinRow <= m_nMaxRow && m_nMinCol <= m_nMaxCol);
-}
-
-inline int HCellRange::inRange(int row, int col) const
-{
-     return (row >= m_nMinRow && row <= m_nMaxRow && col >= m_nMinCol && col <= m_nMaxCol);
-}
-
-inline int HCellRange::inRange(const HCellID& cellID) const
-{
-     return inRange(cellID.row, cellID.col);
-}
-
-inline HCellID HCellRange::topLeft() const
-{
-     return HCellID(m_nMinRow, m_nMinCol);
-}
-
-inline HCellRange HCellRange::intersect(const HCellRange& rhs) const
-{
-
-     return HCellRange(qMax(m_nMinRow,rhs.m_nMinRow), qMax(m_nMinCol,rhs.m_nMinCol),
-                       qMin(m_nMaxRow,rhs.m_nMaxRow), qMin(m_nMaxCol,rhs.m_nMaxCol));
-}
 
 #endif // !defined(HCELLRANGE_H_)

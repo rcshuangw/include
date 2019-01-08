@@ -12,6 +12,10 @@ public:
     HGridCellBase(QObject* parent = 0);
     virtual ~HGridCellBase();
 
+public:
+    virtual void load(int v,QDataStream* ds);
+    virtual void save(int v,QDataStream* ds);
+
 // 单元格相关属性
 public:
     virtual void setText(const QString&)       = 0 ; //设置文字
@@ -41,9 +45,6 @@ public:
     virtual int        margin()     const      = 0;
     virtual QWidget*   editWnd()    const      = 0;
 
-    
-    //virtual CWnd     * GetEditWnd()    const                = 0 ;
-    //virtual CFont    * GetFontObject() const                = 0 ;
 
     virtual bool isDefaultFont()       const   = 0 ;
     virtual bool isEditing()           const   = 0 ;
@@ -58,21 +59,15 @@ public:
 
 public:
 	//单元格边框相关属性
-    virtual void   setBorderStyle(short style)          = 0 ;//设置边框风格，实线，虚线等
-    virtual void   setBorderColor(const QColor&)        = 0 ;
-    virtual short  borderStyle()                  const = 0 ;
-    virtual QColor borderColor()                  const = 0 ;
-
-    virtual void   setDrawBorder(bool)          = 0 ;
     virtual void   setDrawBorderTop(bool)       = 0 ;
     virtual void   setDrawBorderBottom(bool)    = 0 ;
     virtual void   setDrawBorderLeft(bool)      = 0 ;
     virtual void   setDrawBorderRight(bool)     = 0 ;
-    virtual bool   isDrawBorder()           = 0 ;
-    virtual	bool   isDrawBorderBottom()     = 0 ;
-    virtual	bool   isDrawBorderRight()      = 0 ;
-    virtual	bool   isDrawBorderTop()        = 0 ;
-    virtual	bool   isDrawBorderLeft()       = 0 ;
+
+    virtual	bool   isDrawBorderBottom()         = 0 ;
+    virtual	bool   isDrawBorderRight()          = 0 ;
+    virtual	bool   isDrawBorderTop()            = 0 ;
+    virtual	bool   isDrawBorderLeft()           = 0 ;
 
     //风格
     virtual void setBorderBottomStyle(ushort style)     = 0 ;
@@ -96,7 +91,6 @@ public:
     virtual QColor   borderTopColor()      const = 0 ;
     virtual QColor   borderLeftColor()     const = 0 ;
 
-	virtual	void   clearBorderColor()       = 0 ;
 	virtual	void   clearBorderBottomColor() = 0 ;
 	virtual	void   clearBorderRightColor()  = 0 ;
 	virtual	void   clearBorderTopColor()    = 0 ;
