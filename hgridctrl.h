@@ -3,7 +3,10 @@
 //
 // Grid Control - main header
 // Qt表格文件
-//
+//原表格文件支持windows平台，采用MFC机制编写，不过其中很多部分都是独立实现的
+//但这些在Qt中有部分支持的不是很好，所以要改用Qt本身支持方式会比较好.
+//原来的表格仅对表格中文字采取操作，但实际上类似excel还要对文字格式等进行操作
+//此表格满足基本要求，对类似execl稍微复杂一点的可能不支持，更别说高级功能的支持。
 //////////////////////////////////////////////////////////////////////
 
 #if !defined(AFX_GRIDCTRL_H__519FA702_722C_11D1_ABBA_00A0243D1382__INCLUDED_)
@@ -28,6 +31,8 @@ public:
     HGridCtrl(int nRows = 0, int nCols = 0, int nFixedRows = 0, int nFixedCols = 0,QWidget *parent = Q_NULLPTR);
     virtual ~HGridCtrl();
 
+public:
+    void initGridCtrl();
 ///////////////////////////////////////////////////////////////////////////////////
 // 属性操作
 ///////////////////////////////////////////////////////////////////////////////////
@@ -457,8 +462,8 @@ public:
     //void EnableWysiwygPrinting(bool bEnable = true) { m_bWysiwygPrinting = bEnable;     }
     //bool GetWysiwygPrinting()                       { return m_bWysiwygPrinting;        }
 
-    //void SetShadedPrintOut(bool bEnable = true)     {   m_bShadedPrintOut = bEnable;    }
-    //bool GetShadedPrintOut(void)                    {   return m_bShadedPrintOut;       }
+    void SetShadedPrintOut(bool bEnable = true)     {   m_bShadedPrintOut = bEnable;    }
+    bool GetShadedPrintOut(void)                    {   return m_bShadedPrintOut;       }
 
     // Use -1 to have it keep the existing value
     void setPrintMarginInfo(int nHeaderHeight, int nFooterHeight,
@@ -710,6 +715,15 @@ protected:
     // lines.  Left, right, and gap are in characters (avg width is used).
     int         m_nHeaderHeight, m_nFooterHeight, m_nLeftMargin,
                 m_nRightMargin, m_nTopMargin, m_nBottomMargin, m_nGap;
+public slots:
+    void cut();
+    void paste();
+    void copy();
+
+private:
+    QAction* cutAct;
+    QAction* copyAct;
+    QAction* pasteAct;
 };
 
 // Returns the default cell implementation for the given grid region
