@@ -427,14 +427,7 @@ public:
 
 #endif
 */
-#ifndef QT_NO_CLIPBOARD
-    //复制 剪切 拷贝
-    virtual void onEditCut();
-    virtual void onEditCopy();
-    virtual void onEditPaste();
-#endif
-    // Ctrl+A 全选
-    virtual void onEditSelectAll();
+
 /*
 ///////////////////////////////////////////////////////////////////////////////////
 // Misc.排序 比较等
@@ -571,7 +564,6 @@ protected:
 
     // Editing
     virtual void  onEditCell(int nRow, int nCol, QPoint point);
-    //virtual void  onEndEditCell(int nRow, int nCol, CString str);
     virtual bool  validateEdit(int nRow, int nCol, QString& str);
     virtual void  endEditing();
 
@@ -716,14 +708,14 @@ protected:
     int         m_nHeaderHeight, m_nFooterHeight, m_nLeftMargin,
                 m_nRightMargin, m_nTopMargin, m_nBottomMargin, m_nGap;
 public slots:
-    void cut();
-    void paste();
-    void copy();
-
-private:
-    QAction* cutAct;
-    QAction* copyAct;
-    QAction* pasteAct;
+#ifndef QT_NO_CLIPBOARD
+    //复制 剪切 拷贝
+    virtual void onEditCut();
+    virtual void onEditCopy();
+    virtual void onEditPaste();
+#endif
+    // Ctrl+A 全选
+    virtual void onEditSelectAll();
 };
 
 // Returns the default cell implementation for the given grid region
