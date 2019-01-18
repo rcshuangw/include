@@ -159,7 +159,11 @@ typedef struct _GV_ITEM {
 
 //表格边框结构
 typedef struct _GV_BORDER_ITEM {
-    int row,col;
+    bool        bBorderOutSide;
+    bool        bBorderLeft;
+    bool        bBorderTop;
+    bool        bBorderRight;
+    bool        bBorderBottom;
     short       nLeftBorderStyle;
     QString     strLeftBoderClr;
     short       nRightBorderStyle;
