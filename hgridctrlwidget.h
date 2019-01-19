@@ -27,8 +27,12 @@ public:
 public:
     //
     void setMaxRowCol(int rowMax,int colMax);
+    void selectedRowCol(int& row1,int& col1,int& row2,int& col2);
+    void setSelectedRowCol(int row1,int col1,int row2,int col2);
+    void selectedRect(QRect& rect);
 
     //单元格操作
+    void setText(int row,int col,const QString&);
     void setFormat(quint32 f);
     quint32 format();
 

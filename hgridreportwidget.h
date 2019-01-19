@@ -54,6 +54,10 @@ public:
 /// //////////////////////////////////////////////////////////////////////////
     void setMaxRow(int row);
     void setMaxCol(int col);
+    void selectedRowCol(int& row1,int& col1,int& row2,int& col2);
+    void setSelectedRowCol(int row1,int col1,int row2,int col2);
+    void selectedRect(QRect& rect);
+
     void paste();
     void cut();
     void copy();

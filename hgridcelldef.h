@@ -174,18 +174,6 @@ typedef struct _GV_BORDER_ITEM {
     QString     strBottomBoderClr;
 }GV_BORDER_ITEM;
 
-//操作票模板文件头
-typedef struct _tagGC_ITEM
-{
-    quint16 wReportID;			//模板文件ID
-    quint8  btType;				//报表类型：模板\工作票
-    quint32    nMaxRow;			//最大行数
-    quint32    nMaxCol;			//最大列数
-    QString strReportName;	//模板名称\工作票任务名
-} GC_ITEM;
-
-
-
 //单元格数据值
 #define QMAKELONG(a, b) ((long)(((ushort)(((ulong)(a)) & 0xffff)) | ((quint32)((ushort)(((quint32)(b)) & 0xffff))) << 16))
 
