@@ -16,7 +16,9 @@ public:
     void setEditorGridReportAttr();
     void setBrowserGridReportAttr();
 public:
+    void setReportFile(const QString& str);
     void init();
+    void open();
     void update();
     void clear();
 public:
@@ -57,6 +59,9 @@ public:
     void selectedRowCol(int& row1,int& col1,int& row2,int& col2);
     void setSelectedRowCol(int row1,int col1,int row2,int col2);
     void selectedRect(QRect& rect);
+    void setFocusCell(int row,int col);
+    void setTextColor(int row,int col,const QColor& clr);
+    void enableOnlyRead(int row,int col,bool bRead = false);
 
     void paste();
     void cut();
@@ -89,6 +94,11 @@ public:
     bool setColumnWidth(int width);
     int  rowHeight();
     int  columnWidth();
+
+    //打印
+    void printPreview();
+    void print();
+
 
 signals:
     void gridcellclicked();

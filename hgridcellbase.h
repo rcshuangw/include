@@ -131,7 +131,7 @@ public:
     virtual void endEdit() {}
 
     // EFW - Added to print cells properly
-    virtual bool printCell(QPainter* painter, int nRow, int nCol, QRect& rect);
+    virtual bool printCell(QPainter* painter, int nRow, int nCol, QRect rect);
 
     // add additional protected grid members required of cells
     //LRESULT SendMessageToParent(int nRow, int nCol, int nMessage);

@@ -30,6 +30,9 @@ public:
     void selectedRowCol(int& row1,int& col1,int& row2,int& col2);
     void setSelectedRowCol(int row1,int col1,int row2,int col2);
     void selectedRect(QRect& rect);
+    void setFocusCell(int row,int col);
+    void setTextColor(int row,int col,const QColor& clr);
+    void enableOnlyRead(int row,int col,bool bRead = false);
 
     //单元格操作
     void setText(int row,int col,const QString&);
