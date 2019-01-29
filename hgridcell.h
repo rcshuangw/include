@@ -28,7 +28,7 @@ public:
     virtual void  setFormat(quint32 nFormat)                { m_nFormat = nFormat; }  //格式
     virtual void  setTextClr(const QColor& clr)             { m_crFgClr = clr;     }
     virtual void  setBackClr(const QColor& clr)             { m_crBkClr = clr;     }
-    virtual void  setFont(const QFont& font)                { m_plfFont = font;    }
+    virtual void  setFont(const QFont& font);
     virtual void  setMargin(uint nMargin)                   { m_nMargin = nMargin; }
     virtual void  setCoords(int /*nRow*/, int /*nCol*/) {}  // don't need to know the row and
                                                             // column for base implementation
@@ -42,7 +42,7 @@ public:
     virtual QColor      textClr() const                     { return m_crFgClr; } // TODO: change to use default cell
     virtual QColor      backClr() const                     { return m_crBkClr; }
     virtual QFont       font()    const                     { return m_plfFont; }
-    virtual int         margin()  const                     { return m_nMargin; }
+    virtual uint         margin()  const;
     virtual QWidget*    editWnd() const                     { return m_pEditWnd;   }
 
     //单元格边框相关属性

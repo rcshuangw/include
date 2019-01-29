@@ -42,7 +42,7 @@ public:
     virtual QColor     backClr()    const      = 0 ;
     virtual QFont      font()       const      = 0 ;
     virtual HGridCtrl* grid()       const      = 0 ;
-    virtual int        margin()     const      = 0;
+    virtual uint        margin()     const      = 0;
     virtual QWidget*   editWnd()    const      = 0;
 
 

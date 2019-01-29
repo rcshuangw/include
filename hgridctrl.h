@@ -467,6 +467,8 @@ public:
         int &nLeftMargin, int &nRightMargin, int &nTopMargin,
         int &nBottomMargin, int &nGap);
 
+    void setPrintHeadFoot(QString strHead,QString strFoot);
+
 
 ///////////////////////////////////////////////////////////////////////////////////
 // Printing overrides for derived classes
@@ -707,6 +709,7 @@ protected:
     // lines.  Left, right, and gap are in characters (avg width is used).
     int         m_nHeaderHeight, m_nFooterHeight, m_nLeftMargin,
                 m_nRightMargin, m_nTopMargin, m_nBottomMargin, m_nGap;
+    QString m_strHead,m_strFoot;
 public slots:
 #ifndef QT_NO_CLIPBOARD
     //复制 剪切 拷贝

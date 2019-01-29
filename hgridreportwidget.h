@@ -98,6 +98,10 @@ public:
     //打印
     void printPreview();
     void print();
+    void setPrintMarginInfo(int nHeaderHeight, int nFooterHeight,
+        int nLeftMargin, int nRightMargin, int nTopMargin,
+        int nBottomMargin);
+    void setPrintHeadFoot(QString strHead,QString strFoot);
 
 
 signals:

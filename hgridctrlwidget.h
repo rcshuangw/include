@@ -82,6 +82,12 @@ public:
     bool setColumnWidth(int width);
     int  rowHeight();
     int  columnWidth();
+
+    //打印
+    void setPrintMarginInfo(int nHeaderHeight, int nFooterHeight,
+        int nLeftMargin, int nRightMargin, int nTopMargin,
+        int nBottomMargin);
+    void setPrintHeadFoot(QString strHead,QString strFoot);
 public:
     HGridCtrl* gridCtrl() {return m_pGridCtrl;}
 
