@@ -61,8 +61,8 @@ public:
     void printRowHeadings(QPainter *p, HPrintInfo* pInfo);
     void PrintColumnHeadings(QPainter *p, HPrintInfo *pInfo);
 
+    void initPrintParams();
     void printPage(QPainter* p);
-
     void printPreview();//外部调用
     void print();
 public slots:
@@ -85,6 +85,9 @@ public:
     int         m_nCurrPrintRow;
     int         m_nNumPages;
     int         m_nPageMultiplier;
+
+    QString m_strHeaderText,m_strFooterText;
+    bool m_bHorizontalHeader,m_bVerticalHeader, m_bShowGrids,m_bPrintColour;
 
 };
 

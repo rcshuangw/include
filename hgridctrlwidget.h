@@ -88,6 +88,10 @@ public:
         int nLeftMargin, int nRightMargin, int nTopMargin,
         int nBottomMargin);
     void setPrintHeadFoot(QString strHead,QString strFoot);
+    void printHeadFoot(QString& strHead,QString& strFoot);
+
+    void setPrintOther(bool bHorizontalHeader,bool bVerticalHeader, bool bShowGrids,bool bPrintColour);
+    void printOther(bool& bHorizontalHeader,bool& bVerticalHeader, bool& bShowGrids,bool& bPrintColour);
 public:
     HGridCtrl* gridCtrl() {return m_pGridCtrl;}
 
