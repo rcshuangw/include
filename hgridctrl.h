@@ -400,9 +400,10 @@ public:
 // 剪切 拖拽等操作
 ///////////////////////////////////////////////////////////////////////////////////
 #ifndef QT_NO_CLIPBOARD
+    virtual QString getClipboardFile();
     virtual void cutSelectedText();
-    virtual QString copyTextFromGrid();
-    virtual bool pasteTextToGrid(HCellID& cell, const QString& strCopyText, bool bSelectPastedCells=true);
+    virtual void copyTextFromGrid();
+    virtual bool pasteTextToGrid(HCellID& cell, bool bSelectPastedCells=true);
 #endif
 
 /*
@@ -595,6 +596,8 @@ protected:
     virtual void resizeEvent(QResizeEvent *event);
     virtual void wheelEvent(QWheelEvent *event);
     virtual void mouseDoubleClickEvent(QMouseEvent *event);
+    bool eventFilter(QObject *obj, QEvent *ev);
+
 
 signals:
     void activated(const HCellID& cell);
@@ -710,6 +713,7 @@ protected:
                 m_nRightMargin, m_nTopMargin, m_nBottomMargin, m_nGap;
     QString m_strHead,m_strFoot;
     bool m_bHorizontalHeader,m_bVerticalHeader, m_bPrintShowGrids,m_bPrintColour;
+    bool m_bLineEditCopy;
 public slots:
 #ifndef QT_NO_CLIPBOARD
     //复制 剪切 拷贝
